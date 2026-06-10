@@ -1,0 +1,18 @@
+<h2>Create Customer</h2>
+<br>
+<div>
+    <label>Name</label>
+    <br>
+    <input type="text" [(ngModel)]="customer.name">
+    <br>
+    <label>Email</label>
+    <br>
+    <input type="email" [(ngModel)]="customer.email">
+</div>
+
+<br>
+
+<button type ="button" (click)="createCustomer()">Create Customer
+</button>
+
+<p>{{message}}</p>

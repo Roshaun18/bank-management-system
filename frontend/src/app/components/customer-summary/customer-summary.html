@@ -1,0 +1,23 @@
+<h2>Customer Summary</h2>
+
+@for (customer of customers; track customer.customer_id){
+    <div class="card">
+        <h3>{{customer.name}}</h3>
+        <p>
+            <strong>Customer ID:</strong>
+            {{customer.customer_id}}
+        </p>
+
+        <h4>Accounts</h4>
+
+        <ul>
+            @for(account of customer.accounts;track account.account_id){
+                <li>
+                    {{account.account_id}}
+                    - Balance: Rs.{{account.balance}}
+                </li>
+            }
+        </ul>
+    </div>
+    <br>
+}

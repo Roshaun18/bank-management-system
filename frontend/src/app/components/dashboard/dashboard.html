@@ -1,0 +1,57 @@
+<h2>Account Dashboard</h2>
+<label>Account ID</label>
+<br>
+<input type="text" [(ngModel)]="accountId">
+<br><br>
+
+<button type="button" (click)="getDashboard()">Get Details</button>
+<br><br>
+<p>{{message}}</p>
+
+@if(dashboard){
+    <h3>Account Summary</h3>
+    <p>
+        <strong>Account ID:</strong>
+        {{dashboard.account_id}}
+    </p>
+    <div class="dashboard-grid">
+        <div class="stat-card">
+            <h3>Balance</h3>
+            <p>
+        {{dashboard.balance}}
+    </p>
+        </div>
+        <div class="stat-card">
+            <h3>Transaction Count</h3>
+            <p>
+        {{dashboard.transaction_count}}
+    </p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Total Deposit</h3>
+            <p>
+        {{dashboard.total_deposit}}
+    </p>
+
+        </div>
+
+        <div class="stat-card">
+            <h3>Total Wtihdraw</h3>
+            <p>
+        {{dashboard.total_withdraw}}
+    </p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Total Transfer</h3>
+            <p>
+        {{dashboard.total_transfer}}
+    </p>
+        </div>
+    
+    
+    </div>
+
+    
+}

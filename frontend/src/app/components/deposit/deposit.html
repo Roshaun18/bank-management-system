@@ -1,0 +1,11 @@
+<h2>Deposit Money</h2>
+<label>Account ID</label>
+<br>
+<input type="text" [(ngModel)]="deposit.account_id">
+<br><br>
+<label>Amount</label>
+<br>
+<input type="number" [(ngModel)]="deposit.amount">
+<br><br>
+<button type="button" (click)="depositMoney()">Deposit</button>
+<p>{{message}}</p>

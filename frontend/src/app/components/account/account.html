@@ -1,0 +1,12 @@
+<h2>Create Account</h2>
+
+<label>Customer ID</label>
+<br>
+<input type="text" [(ngModel)]="account.customer_id">
+<br><br>
+<label>Initial Balance</label>
+<br>
+<input type="number" [(ngModel)]="account.balance">
+<br><br>
+<button type="button" (click)="createAccount()">Create Account</button>
+<p>{{message}}</p>

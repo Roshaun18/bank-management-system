@@ -1,0 +1,24 @@
+<h2>Transaction History</h2>
+<label>Account ID</label>
+<br>
+<input type="text" [(ngModel)]="accountId">
+<br><br>
+<button type="button" (click)="loadTransactions()">Get Transacations</button>
+<br><br>
+<p>{{message}}</p>
+
+<div class="card">
+    <table border="1" *ngIf="transactions.length>0">
+    <tr>
+        <th>Transaction ID</th>
+        <th>Type</th>
+        <th>Amount</th>
+    </tr>
+
+    <tr *ngFor="let txn of transactions">
+        <td>{{txn.id}}</td>
+        <td>{{txn.type}}</td>
+        <td>{{txn.amount}}</td>
+    </tr>
+</table>
+</div>

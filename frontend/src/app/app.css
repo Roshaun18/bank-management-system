@@ -1,0 +1,40 @@
+body{
+    font-family: Arial, sans-serif;
+}
+
+nav{
+    background:#1e3a8a;
+    padding:15px 30px;
+    display:flex;
+    gap:20px;
+    align-items:center;
+    flex-wrap: wrap;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-right:15px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:#93c5fd;
+}
+
+.theme-btn{
+    margin-left:auto;
+    background:white;
+    color:#1e3a8a;
+    border:none;
+    padding:8px 12px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.active-link{
+    background:white;
+    color:#1e3a8a !important;
+    padding: 8px 12px;
+    border-radius:6px;
+}
