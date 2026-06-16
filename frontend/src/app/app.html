@@ -1,4 +1,4 @@
-<div *ngIf="router.url !=='/login' && router.url !== '/account-selection'">
+<div *ngIf="router.url !=='/login' && router.url !== '/account-selection' else authPages">
 <div class="app-layout">
         <aside class="sidebar">
                 <h1>Bank Management System</h1>
@@ -39,11 +39,13 @@
 
 </div>
 
-       
+
         
 
 </div>
 
-
+<ng-template #authPages>
+        <router-outlet></router-outlet>
+</ng-template>
 
 

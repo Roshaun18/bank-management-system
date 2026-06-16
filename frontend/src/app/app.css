@@ -68,6 +68,8 @@ body{
 .sidebar .active-link{
     background: white;
     color:#1e3a8a !important;
+    font-weight:bold;
+    box-shadow: 0 5px 15px rgba(255,255,255,.2);
 }
 
 .sidebar button{
