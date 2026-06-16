@@ -10,7 +10,8 @@ import { BankService } from '../../services/bank';
   styleUrl: './dashboard.css',
 })
 export class DashboardComponent {
-  accountId='';
+  role=localStorage.getItem('role');
+  accountId: string | null='';
   message='';
   dashboard:any=null;
 
@@ -19,7 +20,15 @@ export class DashboardComponent {
     private cdr: ChangeDetectorRef
   ){}
 
+  ngOnInit(){
+    if (this.role==='customer'){
+      this.accountId=localStorage.getItem('accountId');
+      this.getDashboard();
+    }
+  }
+
   getDashboard(){
+  
     if(!this.accountId){
       this.message="Please enter AccountID";
       this.cdr.detectChanges();

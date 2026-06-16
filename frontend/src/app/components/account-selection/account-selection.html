@@ -1,0 +1,7 @@
+<h2>Select Account</h2>
+<div *ngFor="let account of accounts" class="account-card">
+    <h3>{{account.account_id}}</h3>
+    <p>Balance: Rs.{{account.balance}}</p>
+    <br>
+    <button type="button" class="theme-btn" (click)="selectedAccount(account.account_id)">Use Account</button>
+</div>

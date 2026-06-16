@@ -56,6 +56,7 @@ func Deposit(w http.ResponseWriter, r *http.Request) {
 		AccountID: req.AccountID,
 		Amount:    req.Amount,
 		Type:      "DEPOSIT",
+		CreatedAt: time.Now(),
 	}
 
 	_, err = transactionCollection.InsertOne(context.Background(), transaction)
@@ -123,6 +124,7 @@ func Withdraw(w http.ResponseWriter, r *http.Request) {
 		AccountID: req.AccountID,
 		Amount:    req.Amount,
 		Type:      "WITHDRAW",
+		CreatedAt: time.Now(),
 	}
 
 	_, err = transactionCollection.InsertOne(context.Background(), transaction)
@@ -181,9 +183,18 @@ func GetTransactions(w http.ResponseWriter, r *http.Request) {
 
 	}
 
+	accountCollection := DB.Collection("accounts")
+	var account Account
+	err := accountCollection.FindOne(context.Background(), bson.M{"account_id": accountID}).Decode(&account)
+
+	if err != nil {
+		http.Error(w, "Account Not Found", http.StatusNotFound)
+		return
+	}
+
 	collection := DB.Collection("transactions")
 
-	var transactions []Transaction
+	transactions := []Transaction{}
 
 	cursor, err := collection.Find(context.Background(), bson.M{"account_id": accountID})
 
@@ -278,6 +289,7 @@ func TransferMoney(w http.ResponseWriter, r *http.Request) {
 		ToAccountID: req.ToAccount,
 		Amount:      req.Amount,
 		Type:        "TRANSFER",
+		CreatedAt:   time.Now(),
 	}
 
 	_, err = transactionCollection.InsertOne(context.Background(), transaction)

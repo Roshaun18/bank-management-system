@@ -16,15 +16,27 @@ export class DepositComponent {
   };
 
   message='';
+  selectedAccount='';
+
+
   constructor(
     private bankService: BankService,
   private cdr: ChangeDetectorRef){}
+
+    ngOnInit(){
+    this.selectedAccount=localStorage.getItem('accountId') || '';
+  }
     depositMoney(){
+      const accountId=localStorage.getItem('accountId');
+      if(!accountId){
+        this.message='No account selected';
+        return;
+      }
+      this.deposit.account_id=accountId;
       this.bankService.depositMoney(this.deposit)
       .subscribe({
         next:(response)=>{
           this.message=`${response.message} | Balance: ${response.new_balance}`;
-          this.deposit.account_id='';
           this.deposit.amount=0;
           this.cdr.detectChanges();
         },

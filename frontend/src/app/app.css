@@ -2,39 +2,75 @@ body{
     font-family: Arial, sans-serif;
 }
 
-nav{
-    background:#1e3a8a;
-    padding:15px 30px;
-    display:flex;
-    gap:20px;
-    align-items:center;
-    flex-wrap: wrap;
-}
-
-nav a{
-    color:white;
-    text-decoration:none;
-    margin-right:15px;
-    font-weight:bold;
-}
-
-nav a:hover{
-    color:#93c5fd;
-}
-
-.theme-btn{
-    margin-left:auto;
-    background:white;
-    color:#1e3a8a;
-    border:none;
-    padding:8px 12px;
-    border-radius:6px;
-    cursor:pointer;
-}
-
 .active-link{
     background:white;
     color:#1e3a8a !important;
     padding: 8px 12px;
     border-radius:6px;
 }
+
+.app-layout{
+    display:flex;
+    min-height:100vh;
+}
+
+.sidebar{
+    width:260px;
+    background: linear-gradient(
+        180deg,
+        #0f172a,
+        #1e3a8a
+    );
+    color:white;
+    padding:25px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+
+}
+
+.sidebar a{
+    color:white;
+    text-decoration:none;
+    padding:12px;
+    border-radius:10px;
+    transition:.3s;
+}
+
+.sidebar a:hover{
+    background:rgba(255,255,255,.15);
+    transform:translateX(5px);
+}
+
+.main-content{
+    flex:1;
+    padding:40px;
+    background:#f8fafc;
+    overflow:auto;
+}
+
+.logout-btn{
+    margin-top:auto;
+    background:#dc2626;
+    color:white;
+    border: none;
+    padding:12px;
+    border-radius: 10px;
+    cursor:pointer;
+}
+
+.sidebar h2{
+    margin-bottom:30px;
+    text-align:center;
+    font-size:1.5rem;
+}
+
+.sidebar .active-link{
+    background: white;
+    color:#1e3a8a !important;
+}
+
+.sidebar button{
+    width:100%;
+}
+

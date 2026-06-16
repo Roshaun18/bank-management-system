@@ -1,0 +1,13 @@
+<div class="login-card">
+    <h2>Bank Login</h2>
+    <label>Username</label>
+    <br>
+    <input type="text" [(ngModel)]="loginData.username">
+    <br><br>
+    <label>Password</label>
+    <br>
+    <input type="password" [(ngModel)]="loginData.password">
+    <br><br>
+    <button type="button" class="theme-btn" (click)="login()">Login</button>
+    <p>{{message}}</p>
+</div>

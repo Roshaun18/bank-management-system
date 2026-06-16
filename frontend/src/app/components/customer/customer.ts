@@ -13,7 +13,9 @@ import { ChangeDetectorRef } from '@angular/core';
 export class CustomerComponent{
   customer={
     name:'',
-    email:''
+    email:'',
+    username:'',
+    password:''
   };
 
   message='';
@@ -24,7 +26,9 @@ export class CustomerComponent{
   createCustomer(){
     const payload={
       name:this.customer.name,
-      email:this.customer.email
+      email:this.customer.email,
+      username:this.customer.username,
+      password:this.customer.password
     };
 
     this.bankService.createCustomer(payload)
@@ -34,6 +38,8 @@ export class CustomerComponent{
         this.message=`${response.message}(ID: ${response.id})`;
         this.customer.name='';
         this.customer.email='';
+        this.customer.username='';
+        this.customer.password='';
         this.cdr.detectChanges();
       },
       error:(err)=>{

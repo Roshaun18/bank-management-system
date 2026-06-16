@@ -14,12 +14,26 @@ export class WithdrawComponent {
     account_id:'',
     amount:0
   };
+  
 
   message='';
+  selectedAccount='';
   constructor(
     private bankService:BankService,
-  private cdr: ChangeDetectorRef){}
+  private cdr: ChangeDetectorRef
+){}
+
+ngOnInit(){
+  this.selectedAccount=localStorage.getItem('accountId') || '';
+}
+
   withdrawMoney(){
+    const accountId=localStorage.getItem('accountId');
+      if(!accountId){
+        this.message='No account selected';
+        return;
+      }
+      this.withdraw.account_id=accountId;
     this.bankService.withdrawMoney(this.withdraw)
     .subscribe({
       next:(response)=>{

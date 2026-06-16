@@ -54,6 +54,7 @@ func CreateAccount(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetAccount(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("GetCustomer Accounts called")
 	if r.Method != http.MethodGet {
 		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		return
@@ -79,4 +80,38 @@ func GetAccount(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(account)
+}
+
+func GetCustomerAccounts(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	customerID := r.URL.Query().Get("customer_id")
+
+	if customerID == "" {
+		http.Error(w, "Customer ID is required", http.StatusBadRequest)
+		return
+	}
+
+	accountCollection := DB.Collection("accounts")
+
+	cursor, err := accountCollection.Find(context.Background(), bson.M{"customer_id": customerID})
+
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	var accounts []Account
+	err = cursor.All(context.Background(), &accounts)
+
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(accounts)
 }

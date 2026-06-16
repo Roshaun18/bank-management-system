@@ -8,11 +8,19 @@
     <label>Email</label>
     <br>
     <input type="email" [(ngModel)]="customer.email">
+    <br>
+    <label>Username</label>
+    <br>
+    <input type="text" [(ngModel)]="customer.username">
+    <br><br>
+    <label>Password</label>
+    <br>
+    <input type="password" [(ngModel)]="customer.password">
 </div>
 
 <br>
 
-<button type ="button" (click)="createCustomer()">Create Customer
+<button type ="button" class="theme-btn" (click)="createCustomer()">Create Customer
 </button>
 
 <p>{{message}}</p>

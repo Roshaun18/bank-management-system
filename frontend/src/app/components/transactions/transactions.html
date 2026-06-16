@@ -1,24 +1,28 @@
-<h2>Transaction History</h2>
-<label>Account ID</label>
-<br>
-<input type="text" [(ngModel)]="accountId">
-<br><br>
-<button type="button" (click)="loadTransactions()">Get Transacations</button>
-<br><br>
+<h2>Account Statement</h2>
+@if(role==='admin'){
+    <input type="text" [(ngModel)]="accountId">
+<button type="button" class="theme-btn" (click)="loadTransactions()">Get Statement</button>
+    
+}
 <p>{{message}}</p>
 
 <div class="card">
-    <table border="1" *ngIf="transactions.length>0">
+    <table border="1" *ngIf="transactions && transactions.length>0">
     <tr>
         <th>Transaction ID</th>
+        <th>Date</th>
+        <th>To Account</th>
         <th>Type</th>
         <th>Amount</th>
     </tr>
 
     <tr *ngFor="let txn of transactions">
         <td>{{txn.id}}</td>
+        <td>{{txn.created_at}}</td>
+        <td>{{txn.to_account_id}}</td>
         <td>{{txn.type}}</td>
-        <td>{{txn.amount}}</td>
+        <td *ngIf="txn.type==='DEPOSIT'">+{{txn.amount}}</td>
+        <td *ngIf="txn.type!=='DEPOSIT'">-{{txn.amount}}</td>
     </tr>
 </table>
 </div>

@@ -39,4 +39,16 @@ export class BankService{
     getCustomerSummary():Observable<any>{
         return this.http.get(`${this.apiUrl}/customer-summary`);
     }
+
+    login(data:any):Observable<any>{
+        return this.http.post(`${this.apiUrl}/login`,data);
+    }
+
+    getCustomerAccounts(customerId:string){
+        return this.http.get<any[]>(`${this.apiUrl}/customer/accounts?customer_id=${customerId}`);
+    }
+
+    changePassword(data:any):Observable<any>{
+        return this.http.post(`${this.apiUrl}/change-password`,data);
+    }
 }

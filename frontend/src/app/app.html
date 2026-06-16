@@ -1,19 +1,49 @@
-<h1>Bank Management System</h1>
-<nav>
-<a routerLink="/home" routerLinkActive="active-link">Home</a> |
-<a routerLink="/customer" routerLinkActive="active-link">Customer</a> |
-<a routerLink="/account" routerLinkActive="active-link">Account</a> |
-<a routerLink="/deposit" routerLinkActive="active-link">Deposit</a> |
-<a routerLink="/withdraw" routerLinkActive="active-link">Withdraw</a> |
-<a routerLink="/transfer" routerLinkActive="active-link">Transfer</a> |
-<a routerLink="/transactions" routerLinkActive="active-link">History</a> |
-<a routerLink="/dashboard" routerLinkActive="active-link">Dashboard</a> |
+<div *ngIf="router.url !=='/login' && router.url !== '/account-selection'">
+<div class="app-layout">
+        <aside class="sidebar">
+                <h1>Bank Management System</h1>
+                
+        <a routerLink="/home" routerLinkActive="active-link">Home</a> 
+        @if(role==='admin'){
+            <a routerLink="/customer" routerLinkActive="active-link">Customer</a> 
+<a routerLink="/account" routerLinkActive="active-link">Account</a> 
+<a routerLink="/dashboard" routerLinkActive="active-link">Dashboard</a> 
+<a routerLink="/transactions" routerLinkActive="active-link">Statemnet</a> 
 <a routerLink="/customer-summary" routerLinkActive="active-link">Customer Summary</a>
 
+        }
+
+        @if(role==='customer'){
+<a routerLink="/dashboard" routerLinkActive="active-link">Dashboard</a> 
+            <a routerLink="/deposit" routerLinkActive="active-link">Deposit</a> 
+<a routerLink="/withdraw" routerLinkActive="active-link">Withdraw</a> 
+<a routerLink="/transfer" routerLinkActive="active-link">Transfer</a> 
+<a routerLink="/transactions" routerLinkActive="active-link">Statement</a> 
+<a routerLink="/change-password" routerLinkActive="active-link">Change Password</a>
+
+        }
+
+
+
+
+
 <button type="button" class="theme-btn" (click)="toogleTheme()">{{darkMode ? 'Light' : 'Dark'}}</button>
+<button type="button" class="theme-btn" (click)="logout()">Logout</button>
 
-</nav>
+    
+ 
+ </aside>
+ <main class="main-content">
+                <router-outlet></router-outlet>
+        </main>
 
-<hr>
+</div>
 
-<router-outlet></router-outlet>
+       
+        
+
+</div>
+
+
+
+

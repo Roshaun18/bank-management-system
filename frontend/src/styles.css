@@ -1,25 +1,47 @@
+:root{
+    --primary:#1e3a8a;
+    --secondary:#2563eb;
+    --success:#16a34a;
+    --danger:#dc2626;
+    --background:#f8fafc;
+    --card:#ffffff;
+}
+
 *{
-    margin:15px;
+    margin:10;
     padding:0;
     box-sizing:border-box;
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#f4f6f9;
+    font-family:Inter, Arial, sans-serif;
+    background:var(--background);
     color:#111827;
     transition:0.3s;
     
 }
 
 body.dark-theme{
-    background: #111827;
-    color:#f9fafb;
+    background: linear-gradient(
+        135deg,
+        #020617,
+        #0f172a
+    );
+    color:#f8fafc;
 }
 
+body.dark-theme .stat-card,
 body.dark-theme .card{
-    background: #1f2937;
+    background: rgba(30,41,59,.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,.08);
+    box-shadow: 0 8px 32px rgba(0,0,0,.4);
     color: white;
+}
+
+body.dark-theme .stat-card:hover{
+    transform: translateY(-5px);
+    border: 1px solid #2563eb;
 }
 
 body.dark-theme table{
@@ -28,13 +50,18 @@ body.dark-theme table{
 }
 
 body.dark-theme input{
-    background: #374151;
+    background: #0f172a;
     color: white;
-    border: 1px solid #4b5563;
+    border: 1px solid #334155;
 }
 
 body.dark-theme th{
-    background: #2563eb;
+    background: linear-gradient(
+        90deg,
+        #1d4ed8,
+        #2563eb
+    );
+    color:white;
 }
 
 body.dark-theme .stat-card{
@@ -43,7 +70,9 @@ body.dark-theme .stat-card{
 }
 
 body.dark-theme table{
-    background:#1f2937;
+    background:#0f172a;
+    border-radius:16px;
+    overflow:hidden;
     color:white;
 }
 
@@ -55,6 +84,35 @@ body.dark-theme td{
     border-color:#4b5563;
 }
 
+body.dark-theme .main-content{
+    background:#111827;
+    color:white;
+}
+
+body.dark-theme .sidebar{
+    background: linear-gradient(
+        180deg,
+        #020617,
+        #0f172a
+    );
+    border-right: 1px solid rgba(255,255,255,.05);
+}
+
+body.dark-theme .stat-card2{
+    background:
+    linear-gradient(
+        135deg,
+        #1d4ed8,
+        #2563eb
+    );
+    padding:24px;
+    border-radius:20px;
+    color:white;
+    transition:.3s;
+}
+
+
+
 .card{
     background:white;
     padding:25px;
@@ -65,7 +123,53 @@ body.dark-theme td{
 }
 
 .container{
-    max-width:15px;
+    max-width:1200px;
     margin:0 auto;
     padding:30px;
+}
+
+.theme-btn{
+    margin-left:auto;
+    background:#1e3a8a;
+    color:white;
+    border:none;
+    padding:10px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.theme-btn:hover{
+    background:#2563eb;
+}
+
+
+input,
+select{
+    width:100%;
+    padding:12px;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    margin-top:8px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th{
+    background:#1e3a8a;
+    color:white
+}
+
+th,
+td{
+    padding:12px;
+    text-align:left;
+}
+
+tr:nt-child(even){
+    background:#f8fafc;
 }

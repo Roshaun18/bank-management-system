@@ -1,9 +1,15 @@
 package main
 
+import (
+	"time"
+)
+
 type Customer struct {
-	ID    string `json:"id" bson:"id"`
-	Name  string `json:"name" bson:"name"`
-	Email string `json:"email" bson:"email"`
+	ID       string `json:"id" bson:"id"`
+	Name     string `json:"name" bson:"name"`
+	Email    string `json:"email" bson:"email"`
+	Username string `json:"username" bson:"username"`
+	Password string `json:"password" bson:"password"`
 }
 
 type Account struct {
@@ -13,11 +19,12 @@ type Account struct {
 }
 
 type Transaction struct {
-	ID          string  `json:"id" bson:"id"`
-	AccountID   string  `json:"account_id" bson:"account_id"`
-	ToAccountID string  `json:"to_account_id,omitempty" bson:"to_account_id,omitempty"`
-	Amount      float64 `json:"amount" bson:"amount"`
-	Type        string  `json:"type" bson:"type"`
+	ID          string    `json:"id" bson:"id"`
+	AccountID   string    `json:"account_id" bson:"account_id"`
+	ToAccountID string    `json:"to_account_id,omitempty" bson:"to_account_id,omitempty"`
+	Amount      float64   `json:"amount" bson:"amount"`
+	Type        string    `json:"type" bson:"type"`
+	CreatedAt   time.Time `json:"created_at" bson:"created_at"`
 }
 
 type TransactionRequest struct {
@@ -50,4 +57,15 @@ type CustomerSummary struct {
 	Name       string        `json:"name"`
 	Email      string        `json:"email"`
 	Accounts   []AccountInfo `json:"accounts"`
+}
+
+type LoginRequest struct {
+	Username string `json:"username"`
+	Password string `json:"password"`
+}
+
+type ChangePasswordRequest struct {
+	CustomerID  string `json:"customer_id"`
+	OldPassword string `json:"old_password"`
+	NewPassword string `json:"new_password"`
 }

@@ -1,7 +1,5 @@
 <h2>Transfer Money</h2>
-<label>From Account</label>
-<br><br>
-<input type="text" [(ngModel)]="transfer.from_account">
+<h3>Transfer From: {{selectedAccount}}</h3>
 <br><br>
 <label>To Account</label>
 <br>
@@ -11,5 +9,5 @@
 <br>
 <input type="number" [(ngModel)]="transfer.amount">
 <br><br>
-<button type="button" (click)="transferMoney()">Transfer</button>
+<button type="button" class="theme-btn" (click)="transferMoney()">Transfer</button>
 <p>{{message}}</p>

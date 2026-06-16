@@ -1,11 +1,8 @@
 <h2>Withdraw Money</h2>
-<label>Account ID</label>
-<br>
-<input type="text" [(ngModel)]="withdraw.account_id">
-<br><br>
+<h3>Account: {{selectedAccount}}</h3>
 <label>Amount</label>
 <br>
 <input type="number" [(ngModel)]="withdraw.amount">
 <br><br>
-<button type="button" (click)="withdrawMoney()">Withdraw</button>
+<button type="button" class="theme-btn" (click)="withdrawMoney()">Withdraw</button>
 <p>{{message}}</p>

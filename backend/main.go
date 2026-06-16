@@ -23,6 +23,9 @@ func main() {
 	http.HandleFunc("/dashboard", GetDashboard)
 	http.HandleFunc("/get-accounts", GetAccount)
 	http.HandleFunc("/customer-summary", GetCustomerSummary)
+	http.HandleFunc("/login", Login)
+	http.HandleFunc("/customer/accounts", GetCustomerAccounts)
+	http.HandleFunc("/change-password", ChangePassword)
 	handler := enableCORS(http.DefaultServeMux)
 	err = http.ListenAndServe(":8080", handler)
 	if err != nil {

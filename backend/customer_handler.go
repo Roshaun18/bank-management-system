@@ -7,6 +7,8 @@ import (
 	"net/http"
 	"time"
 
+	"golang.org/x/crypto/bcrypt"
+
 	"go.mongodb.org/mongo-driver/v2/bson"
 )
 
@@ -29,18 +31,25 @@ func CreateCustomer(w http.ResponseWriter, r *http.Request) {
 	}
 
 	customer.ID = fmt.Sprintf("C%d", time.Now().UnixNano())
-	if customer.Name == "" || customer.Email == "" {
+	if customer.Name == "" || customer.Email == "" || customer.Username == "" || customer.Password == "" {
 		http.Error(w, "All fields are required", http.StatusBadRequest)
 		return
 	}
 
-	collection := DB.Collection("customers")
-	var exixtingCustomer Customer
+	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(customer.Password), bcrypt.DefaultCost)
+	if err != nil {
+		http.Error(w, "Failed to Hash Password", http.StatusInternalServerError)
+		return
+	}
+	customer.Password = string(hashedPassword)
 
-	err = collection.FindOne(context.Background(), bson.M{"email": customer.Email}).Decode(&exixtingCustomer)
+	collection := DB.Collection("customers")
+	var existingCustomer Customer
+
+	err = collection.FindOne(context.Background(), bson.M{"email": customer.Email, "username": customer.Username}).Decode(&existingCustomer)
 
 	if err == nil {
-		http.Error(w, "Email already exists", http.StatusBadRequest)
+		http.Error(w, "Email or Username already exists", http.StatusBadRequest)
 		return
 	}
 	_, err = collection.InsertOne(context.Background(), customer)
@@ -54,7 +63,6 @@ func CreateCustomer(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetCustomer(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("GetCustomer called")
 	if r.Method != http.MethodGet {
 		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		return
@@ -124,4 +132,52 @@ func GetCustomerSummary(w http.ResponseWriter, r *http.Request) {
 	}
 
 	json.NewEncoder(w).Encode(result)
+}
+
+func ChangePassword(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	var req ChangePasswordRequest
+	err := json.NewDecoder(r.Body).Decode(&req)
+	if err != nil {
+		http.Error(w, "Invalid Request Body", http.StatusBadRequest)
+		return
+	}
+
+	collection := DB.Collection(("customers"))
+	var customer Customer
+	err = collection.FindOne(context.Background(), bson.M{"id": req.CustomerID}).Decode(&customer)
+
+	if err != nil {
+		http.Error(w, "Customer Not Found", http.StatusNotFound)
+		return
+	}
+	err = bcrypt.CompareHashAndPassword([]byte(customer.Password), []byte(req.OldPassword))
+	if err != nil {
+		http.Error(w, "Current Password Incorrect", http.StatusUnauthorized)
+		return
+	}
+	if req.NewPassword == "" {
+		http.Error(w, "New Password Cannot Be Empty", http.StatusBadRequest)
+		return
+	}
+	err = bcrypt.CompareHashAndPassword([]byte(req.OldPassword), []byte(req.NewPassword))
+	if err == nil {
+		http.Error(w, "New Password Must Be Different", http.StatusBadRequest)
+		return
+	}
+	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(req.NewPassword), bcrypt.DefaultCost)
+
+	_, err = collection.UpdateOne(context.Background(), bson.M{"id": req.CustomerID}, bson.M{"$set": bson.M{"password": string(hashedPassword)}})
+	if err != nil {
+		http.Error(w, "Failed to Update Password", http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+
+	json.NewEncoder(w).Encode(map[string]string{"message": "Password Updated Successfully"})
 }
