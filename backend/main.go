@@ -26,6 +26,9 @@ func main() {
 	http.HandleFunc("/login", Login)
 	http.HandleFunc("/customer/accounts", GetCustomerAccounts)
 	http.HandleFunc("/change-password", ChangePassword)
+	http.HandleFunc("/generate-otp", GenerateOtp)
+	http.HandleFunc("/verify-otp", VerifyOtp)
+	http.HandleFunc("/reset-password", ResetPassword)
 	handler := enableCORS(http.DefaultServeMux)
 	err = http.ListenAndServe(":8080", handler)
 	if err != nil {

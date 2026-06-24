@@ -69,3 +69,23 @@ type ChangePasswordRequest struct {
 	OldPassword string `json:"old_password"`
 	NewPassword string `json:"new_password"`
 }
+
+type GenerateOtpRequest struct {
+	Username string `json:"username"`
+}
+
+type OtpRecord struct {
+	Username  string    `bson:"username" json:"username"`
+	Otp       string    `bson:"otp" json:"otp"`
+	ExpiresAt time.Time `bson:"expires_at" json:"expires_at"`
+}
+
+type VerifyOtpRequest struct {
+	Username string `json:"username"`
+	Otp      string `json:"otp"`
+}
+
+type ResetPasswordRequest struct {
+	Username    string `json:"username"`
+	NewPassword string `json:"new_password"`
+}

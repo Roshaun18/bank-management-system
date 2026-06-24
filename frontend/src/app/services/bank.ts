@@ -51,4 +51,16 @@ export class BankService{
     changePassword(data:any):Observable<any>{
         return this.http.post(`${this.apiUrl}/change-password`,data);
     }
+
+    generateOtp(data:any){
+        return this.http.post(`${this.apiUrl}/generate-otp`,data);
+    }
+
+    verifyOtp(data:any):Observable<any>{
+        return this.http.post(`${this.apiUrl}/verify-otp`,data);
+    }
+
+    resetPassword(data:any){
+        return this.http.post(`${this.apiUrl}/reset-password`,data);
+    }
 }
