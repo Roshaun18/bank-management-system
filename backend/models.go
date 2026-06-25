@@ -89,3 +89,9 @@ type ResetPasswordRequest struct {
 	Username    string `json:"username"`
 	NewPassword string `json:"new_password"`
 }
+
+type Beneficiary struct {
+	CustomerID  string `json:"customer_id" bson:"customer_id"`
+	Beneficiary string `json:"beneficiary_name" bson:"beneficiary_name"`
+	AccountID   string `json:"account_id" bson:"account_id"`
+}

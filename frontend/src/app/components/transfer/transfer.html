@@ -1,13 +1,43 @@
 <h2>Transfer Money</h2>
 <h3>Transfer From: {{selectedAccount}}</h3>
 <br><br>
-<label>To Account</label>
+<label>Select Beneficiary</label>
 <br>
-<input type="text" [(ngModel)]="transfer.to_account">
+<select [(ngModel)]="transfer.to_account">
+    <option value="">Select Beneficiary</option>
+    <option *ngFor="let beneficiary of beneficiaries" [value]="beneficiary.account_id">
+        {{beneficiary.beneficiary_name}}
+        -
+        {{beneficiary.account_id}}
+    </option>
+</select>
 <br><br>
 <label>Amount</label>
 <br>
 <input type="number" [(ngModel)]="transfer.amount">
 <br><br>
 <button type="button" class="theme-btn" (click)="transferMoney()">Transfer</button>
+
+<div *ngIf="showConfirmation" class="modal-overlay">
+    <div class="modal-card">
+        <h2>Confirm Transfer</h2>
+        <p>
+            <strong>From:</strong>
+            {{transfer.from_account}}
+        </p>
+        <p>
+            <strong>To:</strong>
+            {{transfer.to_account}}
+        </p>
+        <p>
+            <strong>Amount:</strong>
+            Rs.{{transfer.amount}}
+        </p>
+
+        <div class="modal-actions">
+            <button class="theme-btn" (click)="confirmTransfer()">Confirm</button>
+            <button class="danger-btn" (click)="cancelTransfer()">Cancel</button>
+        </div>
+    </div>
+</div>
 <p>{{message}}</p>

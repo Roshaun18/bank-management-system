@@ -63,4 +63,16 @@ export class BankService{
     resetPassword(data:any){
         return this.http.post(`${this.apiUrl}/reset-password`,data);
     }
+
+    addBeneficiary(data:any):Observable<any>{
+        return this.http.post(`${this.apiUrl}/beneficiary`,data);
+    }
+
+    getBeneficiaries(customerId:string){
+        return this.http.get(`${this.apiUrl}/beneficiaries?customer_id=${customerId}`);
+    }
+
+    deleteBeneficiary(data:any){
+        return this.http.delete(`${this.apiUrl}/beneficiary/delete`,{body:data});
+    }
 }

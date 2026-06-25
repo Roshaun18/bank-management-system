@@ -29,6 +29,9 @@ func main() {
 	http.HandleFunc("/generate-otp", GenerateOtp)
 	http.HandleFunc("/verify-otp", VerifyOtp)
 	http.HandleFunc("/reset-password", ResetPassword)
+	http.HandleFunc("/beneficiary", AddBeneficiary)
+	http.HandleFunc("/beneficiaries", GetBeneficiaries)
+	http.HandleFunc("/beneficiary/delete", DeleteBeneficiary)
 	handler := enableCORS(http.DefaultServeMux)
 	err = http.ListenAndServe(":8080", handler)
 	if err != nil {

@@ -14,6 +14,7 @@ import { adminGuard } from './guards/admin-guard';
 import { AccountSelectionComponent } from './components/account-selection/account-selection';
 import { ChangePasswordComponent } from './components/change-password/change-password';
 import { ForgotPasswordComponent } from './componsnt/forgot-password/forgot-password';
+import { BeneficiariesComponent } from './components/beneficiaries/beneficiaries';
 
 export const routes: Routes = [{path:'', redirectTo:'login', pathMatch:'full'},
     {path:'customer', component:CustomerComponent, canActivate:[authGuard, adminGuard]},
@@ -28,5 +29,6 @@ export const routes: Routes = [{path:'', redirectTo:'login', pathMatch:'full'},
     {path:'login', component:LoginComponent},
     {path:'account-selection', component:AccountSelectionComponent, canActivate:[authGuard]},
     {path:'change-password', component:ChangePasswordComponent, canActivate:[authGuard]},
-    {path:'forgot-password', component:ForgotPasswordComponent}
+    {path:'forgot-password', component:ForgotPasswordComponent},
+    {path:'beneficiaries', component:BeneficiariesComponent, canActivate:[authGuard]}
 ];

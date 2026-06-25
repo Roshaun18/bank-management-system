@@ -1,0 +1,39 @@
+<div class="card">
+    <h2>Beneficiary Management</h2>
+    <p>{{message}}</p>
+    <label>Beneficiary Name</label>
+    <br>
+    <input type="text" [(ngModel)]="beneficiaryName">
+    <br><br>
+    <label>Account ID</label>
+    <br>
+    <input type="text" [(ngModel)]="accountId">
+    <br><br>
+    <button type="button" class="theme-btn" (click)="addBeneficiary()">Add Beneficiary</button>
+</div>
+
+<div class="card">
+    <h3>Saved Beneficiaries</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Account ID</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let beneficiary of beneficiaries">
+                <td>
+                    {{beneficiary.beneficiary_name}}
+                </td>
+                <td>
+                    {{beneficiary.account_id}}
+                </td>
+                <td>
+                    <button class="theme-btn" (click)="deleteBeneficiary(beneficiary.account_id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
