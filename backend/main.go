@@ -1,12 +1,25 @@
 package main
 
 import (
+	"io"
 	"log"
 	"net/http"
+	"os"
 )
 
 func main() {
-	err := ConnectDB()
+	file, err := os.OpenFile("logs/app.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0666)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+	multiWriter := io.MultiWriter(os.Stdout, file)
+	log.SetOutput(multiWriter)
+
+	log.SetFlags(log.Ldate | log.Ltime | log.Lshortfile)
+
+	log.Println("[INFO] Banking application started")
+	err = ConnectDB()
 	if err != nil {
 		log.Fatal(err)
 	}

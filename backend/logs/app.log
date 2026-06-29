@@ -1,0 +1,16 @@
+2026/06/26 12:35:20 main.go:21: [INFO] Banking application started
+2026/06/26 12:35:20 main.go:27: Server Started on: 8080
+2026/06/29 13:10:10 main.go:21: [INFO] Banking application started
+2026/06/29 13:10:11 main.go:27: Server Started on: 8080
+2026/06/29 15:54:57 main.go:21: [INFO] Banking application started
+2026/06/29 15:54:57 main.go:27: Server Started on: 8080
+2026/06/29 15:55:42 auth.go:14: [INFO] Login endpoint called
+2026/06/29 15:55:42 auth.go:74: [INFO]User cust1 logged in 
+2026/06/29 15:55:42 account_handler.go:93: [INFO]Get Accounts Endpoint Called
+2026/06/29 15:55:43 tansaction_handler.go:332: [INFO]Get Dashboard Endpoint Called
+2026/06/29 15:55:43 tansaction_handler.go:398: [INFO]Dashboard for the Account ID: A1782308862813439468 was Fetched
+2026/06/29 15:56:14 tansaction_handler.go:332: [INFO]Get Dashboard Endpoint Called
+2026/06/29 15:56:14 tansaction_handler.go:398: [INFO]Dashboard for the Account ID: A1782308862813439468 was Fetched
+2026/06/29 15:56:30 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/29 15:56:30 tansaction_handler.go:34: [AUDIT]Deposit requested: Account=A1782308862813439468 amount=4000.00
+2026/06/29 15:56:30 tansaction_handler.go:79: [AUDIT]Deposit successful: Account=A1782308862813439468 Amount=4000.00

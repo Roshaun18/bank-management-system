@@ -3,13 +3,14 @@ package main
 import (
 	"context"
 	"encoding/json"
-	"fmt"
+	"log"
 	"net/http"
 
 	"go.mongodb.org/mongo-driver/v2/bson"
 )
 
 func AddBeneficiary(w http.ResponseWriter, r *http.Request) {
+	log.Printf("[INFO]Add Beneficiary Endpoint Called")
 	if r.Method != http.MethodPost {
 		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		return
@@ -52,9 +53,11 @@ func AddBeneficiary(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(map[string]string{
 		"message": "Beneficiary Added Successfully",
 	})
+	log.Printf("[INFO]New Beneficiary with User Name: %s & Account ID: %s was Created", beneficiary.Beneficiary, beneficiary.AccountID)
 }
 
 func GetBeneficiaries(w http.ResponseWriter, r *http.Request) {
+	log.Printf("[INFO]Get Beneficiary Endpoint Called")
 	if r.Method != http.MethodGet {
 		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		return
@@ -72,7 +75,8 @@ func GetBeneficiaries(w http.ResponseWriter, r *http.Request) {
 	cursor, err := collection.Find(context.Background(), bson.M{"customer_id": customerID})
 
 	if err != nil {
-		http.Error(w, "failed To Fetch Beneficiaries", http.StatusInternalServerError)
+		log.Printf("[ERROR]Failed To Fetch the Beneficiaries")
+		http.Error(w, "Failed To Fetch Beneficiaries", http.StatusInternalServerError)
 		return
 	}
 
@@ -87,10 +91,11 @@ func GetBeneficiaries(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(beneficiaries)
+	log.Printf("[INFO]Beneficiaries added in the Customer ID; %s was Fetched", customerID)
 }
 
 func DeleteBeneficiary(w http.ResponseWriter, r *http.Request) {
-
+	log.Printf("[INFO]Delete Beneficiary Endpoint Called")
 	if r.Method != http.MethodDelete {
 		http.Error(w, "method Not Allowed", http.StatusMethodNotAllowed)
 		return
@@ -99,9 +104,6 @@ func DeleteBeneficiary(w http.ResponseWriter, r *http.Request) {
 	var req Beneficiary
 
 	err := json.NewDecoder(r.Body).Decode(&req)
-
-	fmt.Println("Delet hit")
-	fmt.Println(req)
 
 	if err != nil {
 		http.Error(w, "Invalid Request Body", http.StatusBadRequest)
@@ -112,6 +114,7 @@ func DeleteBeneficiary(w http.ResponseWriter, r *http.Request) {
 
 	result, err := collection.DeleteOne(context.Background(), bson.M{"customer_id": req.CustomerID, "account_id": req.AccountID})
 	if err != nil {
+		log.Printf("[ERROR]Failed to Delete the Beneficiary")
 		http.Error(w, "Failed To Delete Beneficiary", http.StatusInternalServerError)
 		return
 	}
@@ -124,5 +127,6 @@ func DeleteBeneficiary(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(map[string]string{
 		"message": "Benificiary Deleted Successfully",
 	})
+	log.Printf("[INFO]Beneficiary Was Deleted Successfully")
 
 }

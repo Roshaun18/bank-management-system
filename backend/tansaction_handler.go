@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"time"
 
@@ -11,6 +12,7 @@ import (
 )
 
 func Deposit(w http.ResponseWriter, r *http.Request) {
+	log.Printf("[INFO]Deposit Endpoint Called")
 	if r.Method != http.MethodPost {
 		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		return
@@ -25,9 +27,11 @@ func Deposit(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if req.Amount <= 0 {
+		log.Printf("[WARN]Invalid deposit amount: %.2f", req.Amount)
 		http.Error(w, "Amount must be greater than zero", http.StatusBadRequest)
 		return
 	}
+	log.Printf("[AUDIT]Deposit requested: Account=%s amount=%.2f", req.AccountID, req.Amount)
 
 	accountCollection := DB.Collection("accounts")
 
@@ -71,9 +75,12 @@ func Deposit(w http.ResponseWriter, r *http.Request) {
 		"message":     "Deposit Successful",
 		"new_balance": newBalance,
 	})
+
+	log.Printf("[AUDIT]Deposit successful: Account=%s Amount=%.2f", req.AccountID, req.Amount)
 }
 
 func Withdraw(w http.ResponseWriter, r *http.Request) {
+	log.Printf("[INFO]Withdraw Endpoint Called")
 	if r.Method != http.MethodPost {
 		http.Error(w, "Method NOt Allowed", http.StatusMethodNotAllowed)
 		return
@@ -89,6 +96,7 @@ func Withdraw(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if req.Amount <= 0 {
+		log.Printf("[WARN]Invalid Withdraw Amount: %.2f", req.Amount)
 		http.Error(w, "Amount must be greater than zero", http.StatusBadRequest)
 		return
 	}
@@ -104,6 +112,7 @@ func Withdraw(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if req.Amount > account.Balance {
+		log.Printf("[ERROR]Insufficient Balance: Account=%s", req.AccountID)
 		http.Error(w, "Insufficient Balance", http.StatusBadRequest)
 		return
 	}
@@ -138,9 +147,11 @@ func Withdraw(w http.ResponseWriter, r *http.Request) {
 		"message":     "Withdraw Successful",
 		"new_balance": newBalance,
 	})
+	log.Printf("[AUDIT]Withdraw Successful: Account%s Amount=%.2f", req.AccountID, req.Amount)
 }
 
 func GetBalance(w http.ResponseWriter, r *http.Request) {
+	log.Printf("[INFO]Get Balance Endpoint Called")
 	if r.Method != http.MethodGet {
 		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		return
@@ -160,6 +171,7 @@ func GetBalance(w http.ResponseWriter, r *http.Request) {
 	err := collection.FindOne(context.Background(), bson.M{"account_id": accountID}).Decode(&account)
 
 	if err != nil {
+		log.Printf("[ERROR]Account Was Not Found In The Database")
 		http.Error(w, "Account Not Found", http.StatusNotFound)
 		return
 	}
@@ -168,9 +180,11 @@ func GetBalance(w http.ResponseWriter, r *http.Request) {
 		"account_id": account.AccountID,
 		"balance":    account.Balance,
 	})
+	log.Printf("[AUDIT]Account balance is %v for the Account ID: %s", account.Balance, account.AccountID)
 }
 
 func GetTransactions(w http.ResponseWriter, r *http.Request) {
+	log.Printf("[INFO]Get Transactions Endpoint Called")
 	if r.Method != http.MethodGet {
 		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		return
@@ -215,9 +229,11 @@ func GetTransactions(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	json.NewEncoder(w).Encode(transactions)
+	log.Printf("[INFO]Transactions for the Account ID: %s was Fetched", account.AccountID)
 }
 
 func TransferMoney(w http.ResponseWriter, r *http.Request) {
+	log.Printf("[INFO]Transfer Money Endpoint Called")
 	if r.Method != http.MethodPost {
 		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		return
@@ -249,7 +265,7 @@ func TransferMoney(w http.ResponseWriter, r *http.Request) {
 	err = collection.FindOne(context.Background(), bson.M{"account_id": req.FromAccount}).Decode(&sender)
 
 	if err != nil {
-		http.Error(w, "Sender Account Not FOund", http.StatusNotFound)
+		http.Error(w, "Sender Account Not Found", http.StatusNotFound)
 		return
 	}
 
@@ -308,9 +324,12 @@ func TransferMoney(w http.ResponseWriter, r *http.Request) {
 		"amount":  req.Amount,
 	})
 
+	log.Printf("[INFO]Amount %v Trnsfered From %s To %s", req.Amount, req.FromAccount, req.ToAccount)
+
 }
 
 func GetDashboard(w http.ResponseWriter, r *http.Request) {
+	log.Printf("[INFO]Get Dashboard Endpoint Called")
 	if r.Method != http.MethodGet {
 		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		return
@@ -376,5 +395,5 @@ func GetDashboard(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(response)
-
+	log.Printf("[INFO]Dashboard for the Account ID: %s was Fetched", accountID)
 }

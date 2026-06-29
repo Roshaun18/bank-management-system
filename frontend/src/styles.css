@@ -165,7 +165,6 @@ body.dark-theme .theme-btn{
     background:#2563eb;
 }
 
-
 input,
 select{
     width:100%;
@@ -195,4 +194,3 @@ td{
 tr:nth-child(even){
     background:#f8fafc;
 }
-

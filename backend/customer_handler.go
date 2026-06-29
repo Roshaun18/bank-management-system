@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"time"
 
@@ -18,6 +19,7 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func CreateCustomer(w http.ResponseWriter, r *http.Request) {
+	log.Printf("[INFO]Create Customer Endpoint Called")
 	if r.Method != http.MethodPost {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		return
@@ -49,6 +51,7 @@ func CreateCustomer(w http.ResponseWriter, r *http.Request) {
 	err = collection.FindOne(context.Background(), bson.M{"email": customer.Email, "username": customer.Username}).Decode(&existingCustomer)
 
 	if err == nil {
+		log.Printf("[WARN]Username or Email Already Exists")
 		http.Error(w, "Email or Username already exists", http.StatusBadRequest)
 		return
 	}
@@ -60,9 +63,11 @@ func CreateCustomer(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(map[string]string{"message": "Customer Created Successfully", "id": customer.ID})
+	log.Printf("[INFO]New Customer was Created with Customer ID: %s", customer.ID)
 }
 
 func GetCustomer(w http.ResponseWriter, r *http.Request) {
+	log.Printf("[INFO]Get Customer Endpoint Called")
 	if r.Method != http.MethodGet {
 		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		return
@@ -79,16 +84,19 @@ func GetCustomer(w http.ResponseWriter, r *http.Request) {
 	err := collection.FindOne(context.Background(), map[string]string{"id": customerID}).Decode(&customer)
 
 	if err != nil {
+		log.Printf("[ERROR]Customer ID Not Found")
 		http.Error(w, "Customer Not Found", http.StatusNotFound)
 		return
 	}
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(customer)
+	log.Printf("[INFO]Custmer with ID: %s was Fetched", customerID)
 
 }
 
 func GetCustomerSummary(w http.ResponseWriter, r *http.Request) {
+	log.Printf("[INFO]Get Customer Summary Endpoint Called")
 	customerCollection := DB.Collection("customers")
 	accountCollection := DB.Collection("accounts")
 
@@ -132,9 +140,11 @@ func GetCustomerSummary(w http.ResponseWriter, r *http.Request) {
 	}
 
 	json.NewEncoder(w).Encode(result)
+	log.Printf("[INFO]Customer Summary Fteched For All Customer")
 }
 
 func ChangePassword(w http.ResponseWriter, r *http.Request) {
+	log.Printf("[INFO]Change Password Endpoint Called")
 	if r.Method != http.MethodPost {
 		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		return
@@ -157,6 +167,7 @@ func ChangePassword(w http.ResponseWriter, r *http.Request) {
 	}
 	err = bcrypt.CompareHashAndPassword([]byte(customer.Password), []byte(req.OldPassword))
 	if err != nil {
+		log.Printf("[ERROR]Current Password Was Incorrect")
 		http.Error(w, "Current Password Incorrect", http.StatusUnauthorized)
 		return
 	}
@@ -173,6 +184,7 @@ func ChangePassword(w http.ResponseWriter, r *http.Request) {
 
 	_, err = collection.UpdateOne(context.Background(), bson.M{"id": req.CustomerID}, bson.M{"$set": bson.M{"password": string(hashedPassword)}})
 	if err != nil {
+		log.Printf("[ERROR]Failed To Update Password")
 		http.Error(w, "Failed to Update Password", http.StatusInternalServerError)
 		return
 	}
@@ -180,4 +192,5 @@ func ChangePassword(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	json.NewEncoder(w).Encode(map[string]string{"message": "Password Updated Successfully"})
+	log.Printf("[INFO]Password was Changed Successfully")
 }

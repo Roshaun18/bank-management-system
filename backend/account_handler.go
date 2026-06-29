@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"time"
 
@@ -11,6 +12,7 @@ import (
 )
 
 func CreateAccount(w http.ResponseWriter, r *http.Request) {
+	log.Printf("[INFO]Create Account endpoint called")
 	if r.Method != http.MethodPost {
 		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		return
@@ -20,6 +22,7 @@ func CreateAccount(w http.ResponseWriter, r *http.Request) {
 	err := json.NewDecoder(r.Body).Decode(&account)
 
 	if err != nil {
+		log.Printf("[ERROR]ailed to decode login request: %v", err)
 		http.Error(w, "Invalid Request Body", http.StatusBadRequest)
 		return
 	}
@@ -51,9 +54,11 @@ func CreateAccount(w http.ResponseWriter, r *http.Request) {
 	}
 
 	json.NewEncoder(w).Encode(map[string]string{"message": "Account Created Successfully", "account_id": account.AccountID})
+	log.Printf("[INFO]Account was created for the customer %s", account.CustomerID)
 }
 
 func GetAccount(w http.ResponseWriter, r *http.Request) {
+	log.Printf("[INFO]Get Account Endpoint called")
 	fmt.Println("GetCustomer Accounts called")
 	if r.Method != http.MethodGet {
 		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
@@ -63,6 +68,7 @@ func GetAccount(w http.ResponseWriter, r *http.Request) {
 	accountID := r.URL.Query().Get("account_id")
 
 	if accountID == "" {
+		log.Printf("[ERROR]Account ID is not filled")
 		http.Error(w, "Account ID is required", http.StatusBadRequest)
 		return
 	}
@@ -74,6 +80,7 @@ func GetAccount(w http.ResponseWriter, r *http.Request) {
 	err := accountCollection.FindOne(context.Background(), bson.M{"account_id": accountID}).Decode(&account)
 
 	if err != nil {
+		log.Printf("[ERROR]Account was Not in the Database")
 		http.Error(w, "Account Not Found", http.StatusNotFound)
 		return
 	}
@@ -83,6 +90,7 @@ func GetAccount(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetCustomerAccounts(w http.ResponseWriter, r *http.Request) {
+	log.Printf("[INFO]Get Accounts Endpoint Called")
 	if r.Method != http.MethodGet {
 		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		return

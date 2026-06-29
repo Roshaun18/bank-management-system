@@ -15,6 +15,7 @@ import (
 )
 
 func GenerateOtp(w http.ResponseWriter, r *http.Request) {
+	log.Printf("[INFO]Generate Otp Endpoint Called")
 	if r.Method != http.MethodPost {
 		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		return
@@ -24,7 +25,7 @@ func GenerateOtp(w http.ResponseWriter, r *http.Request) {
 
 	err := json.NewDecoder(r.Body).Decode(&req)
 	if err != nil {
-		http.Error(w, "invalid Request Body", http.StatusBadRequest)
+		http.Error(w, "Invalid Request Body", http.StatusBadRequest)
 		return
 	}
 
@@ -55,10 +56,12 @@ func GenerateOtp(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(map[string]string{
 		"message": "OTP Sent Successfully",
 	})
+	log.Printf("[INFO]OTP Generated Successfully")
 
 }
 
 func VerifyOtp(w http.ResponseWriter, r *http.Request) {
+	log.Printf("[INFO]Verify Otp Endpoint Called")
 	if r.Method != http.MethodPost {
 		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		return
@@ -85,11 +88,13 @@ func VerifyOtp(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if time.Now().After(otpRecord.ExpiresAt) {
+		log.Printf("[WARN]Given OTP was Expired")
 		http.Error(w, "OTP Expired", http.StatusUnauthorized)
 		return
 	}
 
 	if otpRecord.Otp != req.Otp {
+		log.Printf("[WARN]Given OTP was Invalid")
 		http.Error(w, "Invalid OTP", http.StatusUnauthorized)
 		return
 	}
@@ -97,9 +102,11 @@ func VerifyOtp(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(map[string]string{
 		"message": "OTP Verified Successfully",
 	})
+	log.Printf("[INFO]OTP was Verified Successfully")
 }
 
 func ResetPassword(w http.ResponseWriter, r *http.Request) {
+	log.Printf("[INFO]Reset Password Endpoint Called")
 	if r.Method != http.MethodPost {
 		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		return
@@ -126,6 +133,7 @@ func ResetPassword(w http.ResponseWriter, r *http.Request) {
 	_, err = customerCollection.UpdateOne(context.Background(), bson.M{"username": req.Username}, bson.M{"$set": bson.M{"password": string(hashedPassword)}})
 
 	if err != nil {
+		log.Printf("[ERROR]Password Reset Failed")
 		http.Error(w, "Failed To Reset Password", http.StatusInternalServerError)
 		return
 	}
@@ -137,4 +145,5 @@ func ResetPassword(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(map[string]string{
 		"message": "Password Reset Successfully",
 	})
+	log.Printf("[INFO]Password Reseted Successfuly")
 }
