@@ -291,7 +291,7 @@ func TransferMoney(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	_, err = collection.UpdateOne(context.Background(), bson.M{"account_id": req.ToAccount}, bson.M{"$set": bson.M{"Balance": newReceiverBalance}})
+	_, err = collection.UpdateOne(context.Background(), bson.M{"account_id": req.ToAccount}, bson.M{"$set": bson.M{"balance": newReceiverBalance}})
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
