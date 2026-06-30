@@ -2,11 +2,12 @@ import { Component, ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BankService } from '../../services/bank'; 
 import { CommonModule } from '@angular/common';
+import { ToastComponent } from '../toast/toast';
 
 @Component({
   selector: 'app-transfer',
   standalone:true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, ToastComponent],
   templateUrl: './transfer.html',
   styleUrl: './transfer.css',
 })
@@ -20,6 +21,9 @@ export class TransferComponent {
   selectedAccount='';
   beneficiaries:any[]=[];
   showConfirmation=false;
+  toastMessage='';
+  toastType: 'success' | 'error' = 'success';
+  showToast=false;
   constructor(
     private bankService: BankService,
     private cdr: ChangeDetectorRef
@@ -27,6 +31,19 @@ export class TransferComponent {
   ngOnInit(){
     this.selectedAccount=localStorage.getItem('accountId') || '';
     this.loadBeneficiaries();
+  }
+
+  showNotification(message:string,
+    type: 'success' | 'error'
+  ){
+    this.toastMessage=message;
+    this.toastType=type;
+    this.showToast=true;
+    setTimeout(()=>{
+      this.showToast=false;
+      this.cdr.detectChanges();
+    },3000);
+    
   }
 
   loadBeneficiaries(){
@@ -52,15 +69,17 @@ export class TransferComponent {
     this.bankService
     .transferMoney(this.transfer)
     .subscribe({
-      next:(response)=>{
-        this.message=response.message;
+      next:(response:any)=>{
+        this.showNotification('Transfer Succesful','success');
+        this.message=`${response.message} | Balance: Rs.${response.current_balance}`;
         this.transfer.to_account='';
         this.transfer.amount=0;
         this.showConfirmation=false;
         this.cdr.detectChanges();
       },
-      error:(err)=>{
-        this.message=err.error?.message || err.error || "Transfer Failed";
+      error:(err:any)=>{
+        this.showNotification('Transfer Failed','error'); 
+        this.message=err.error?.message || err.error;
         this.showConfirmation=false;
         this.cdr.detectChanges();
       }

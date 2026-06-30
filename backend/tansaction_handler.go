@@ -318,10 +318,11 @@ func TransferMoney(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	json.NewEncoder(w).Encode(map[string]interface{}{
-		"message": "Transfer Successful",
-		"from":    req.FromAccount,
-		"to":      req.ToAccount,
-		"amount":  req.Amount,
+		"message":         "Transfer Successful",
+		"from":            req.FromAccount,
+		"to":              req.ToAccount,
+		"amount":          req.Amount,
+		"current_balance": newSenderBalance,
 	})
 
 	log.Printf("[INFO]Amount %v Trnsfered From %s To %s", req.Amount, req.FromAccount, req.ToAccount)

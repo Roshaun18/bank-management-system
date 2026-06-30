@@ -5,7 +5,9 @@
     
 }
 <p>{{message}}</p>
-
+<br><br>
+<button class="theme-btn" (click)="downloadCSV()">Download Statement</button>
+<br><br>
 <div class="card">
     <table border="1" *ngIf="transactions && transactions.length>0">
     <tr>

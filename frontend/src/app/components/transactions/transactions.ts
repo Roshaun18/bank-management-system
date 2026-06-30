@@ -57,4 +57,43 @@ export class TransactionsComponent {
       }
     });
   }
+
+  downloadCSV(){
+    const headers=[
+      'Date',
+      'Type',
+      'Amount',
+      'From Account',
+      'To Account',
+      'Balance'
+    ];
+
+    const rows=this.transactions.map(tx=>[
+      new Date(tx.created_at)
+      .toLocaleString(),
+      tx.type || '',
+      tx.amount || '',
+      tx.from_account || '',
+      tx.to_account || '',
+      tx.balance || ''
+    ]);
+
+    const csvContent=[
+      headers,
+      ...rows
+    ]
+    .map(row=>row.join(','))
+    .join('/n');
+    const blob=new Blob(
+      [csvContent],
+      {type: 'text/csv;charset=utf-8;'}
+    );
+
+    const url=window.URL.createObjectURL(blob);
+    const link=document.createElement('a');
+    link.href=url;
+    link.download='statement.csv';
+    link.click();
+    window.URL.revokeObjectURL(url);
+  }
 }

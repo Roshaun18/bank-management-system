@@ -1,0 +1,8 @@
+<div *ngIf="visible" class="toast" [ngClass]="type">
+    <span class="icon">
+        {{type==='success' ? '✓' : '✗'}}
+    </span>
+    <span class="text">
+        {{message}}
+    </span>
+</div>

@@ -14,3 +14,224 @@
 2026/06/29 15:56:30 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
 2026/06/29 15:56:30 tansaction_handler.go:34: [AUDIT]Deposit requested: Account=A1782308862813439468 amount=4000.00
 2026/06/29 15:56:30 tansaction_handler.go:79: [AUDIT]Deposit successful: Account=A1782308862813439468 Amount=4000.00
+2026/06/29 19:12:36 beneficiary_handler.go:60: [INFO]Get Beneficiary Endpoint Called
+2026/06/29 19:12:36 beneficiary_handler.go:94: [INFO]Beneficiaries added in the Customer ID; C1781527413591967884 was Fetched
+2026/06/29 19:12:50 auth.go:14: [INFO] Login endpoint called
+2026/06/29 19:12:50 auth.go:74: [INFO]User cust1 logged in 
+2026/06/29 19:12:50 account_handler.go:93: [INFO]Get Accounts Endpoint Called
+2026/06/29 19:12:52 tansaction_handler.go:332: [INFO]Get Dashboard Endpoint Called
+2026/06/29 19:12:52 tansaction_handler.go:398: [INFO]Dashboard for the Account ID: A1782308862813439468 was Fetched
+2026/06/29 19:12:53 beneficiary_handler.go:60: [INFO]Get Beneficiary Endpoint Called
+2026/06/29 19:12:53 beneficiary_handler.go:94: [INFO]Beneficiaries added in the Customer ID; C1781527413591967884 was Fetched
+2026/06/29 19:12:55 beneficiary_handler.go:60: [INFO]Get Beneficiary Endpoint Called
+2026/06/29 19:12:55 beneficiary_handler.go:94: [INFO]Beneficiaries added in the Customer ID; C1781527413591967884 was Fetched
+2026/06/29 19:13:05 auth.go:14: [INFO] Login endpoint called
+2026/06/29 19:13:06 auth.go:74: [INFO]User cust1 logged in 
+2026/06/29 19:13:06 account_handler.go:93: [INFO]Get Accounts Endpoint Called
+2026/06/29 19:13:06 tansaction_handler.go:332: [INFO]Get Dashboard Endpoint Called
+2026/06/29 19:13:06 tansaction_handler.go:398: [INFO]Dashboard for the Account ID: A1782308884215256742 was Fetched
+2026/06/29 19:13:08 beneficiary_handler.go:60: [INFO]Get Beneficiary Endpoint Called
+2026/06/29 19:13:08 beneficiary_handler.go:94: [INFO]Beneficiaries added in the Customer ID; C1781527413591967884 was Fetched
+2026/06/29 19:13:11 beneficiary_handler.go:60: [INFO]Get Beneficiary Endpoint Called
+2026/06/29 19:13:11 beneficiary_handler.go:94: [INFO]Beneficiaries added in the Customer ID; C1781527413591967884 was Fetched
+2026/06/29 19:16:02 auth.go:14: [INFO] Login endpoint called
+2026/06/29 19:16:02 auth.go:74: [INFO]User cust2 logged in 
+2026/06/29 19:16:02 account_handler.go:93: [INFO]Get Accounts Endpoint Called
+2026/06/29 19:16:03 tansaction_handler.go:332: [INFO]Get Dashboard Endpoint Called
+2026/06/29 19:16:03 tansaction_handler.go:398: [INFO]Dashboard for the Account ID: A1782308669553762612 was Fetched
+2026/06/29 19:16:05 beneficiary_handler.go:60: [INFO]Get Beneficiary Endpoint Called
+2026/06/29 19:16:05 beneficiary_handler.go:94: [INFO]Beneficiaries added in the Customer ID; C1782308653610250854 was Fetched
+2026/06/29 19:16:15 tansaction_handler.go:236: [INFO]Transfer Money Endpoint Called
+2026/06/29 19:16:15 tansaction_handler.go:327: [INFO]Amount 1000 Trnsfered From A1782308669553762612 To A1782308884215256742
+2026/06/29 19:17:26 beneficiary_handler.go:60: [INFO]Get Beneficiary Endpoint Called
+2026/06/29 19:17:26 beneficiary_handler.go:94: [INFO]Beneficiaries added in the Customer ID; C1782308653610250854 was Fetched
+2026/06/29 19:17:41 beneficiary_handler.go:60: [INFO]Get Beneficiary Endpoint Called
+2026/06/29 19:17:41 beneficiary_handler.go:94: [INFO]Beneficiaries added in the Customer ID; C1782308653610250854 was Fetched
+2026/06/29 19:17:49 tansaction_handler.go:236: [INFO]Transfer Money Endpoint Called
+2026/06/29 19:17:49 tansaction_handler.go:327: [INFO]Amount 100 Trnsfered From A1782308669553762612 To A1782308884215256742
+2026/06/29 19:21:46 beneficiary_handler.go:60: [INFO]Get Beneficiary Endpoint Called
+2026/06/29 19:21:46 beneficiary_handler.go:94: [INFO]Beneficiaries added in the Customer ID; C1782308653610250854 was Fetched
+2026/06/29 19:21:56 tansaction_handler.go:236: [INFO]Transfer Money Endpoint Called
+2026/06/29 19:21:56 tansaction_handler.go:327: [INFO]Amount 10 Trnsfered From A1782308669553762612 To A1782308884215256742
+2026/06/29 19:22:23 beneficiary_handler.go:60: [INFO]Get Beneficiary Endpoint Called
+2026/06/29 19:22:23 beneficiary_handler.go:94: [INFO]Beneficiaries added in the Customer ID; C1782308653610250854 was Fetched
+2026/06/29 19:22:33 tansaction_handler.go:236: [INFO]Transfer Money Endpoint Called
+2026/06/29 19:22:33 tansaction_handler.go:327: [INFO]Amount 10 Trnsfered From A1782308669553762612 To A1782308862813439468
+2026/06/29 19:22:44 tansaction_handler.go:236: [INFO]Transfer Money Endpoint Called
+2026/06/29 19:23:17 tansaction_handler.go:236: [INFO]Transfer Money Endpoint Called
+2026/06/30 11:54:30 main.go:21: [INFO] Banking application started
+2026/06/30 11:54:30 main.go:27: Server Started on: 8080
+2026/06/30 12:20:09 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:20:09 tansaction_handler.go:34: [AUDIT]Deposit requested: Account=A1782308669553762612 amount=1000.00
+2026/06/30 12:20:09 tansaction_handler.go:79: [AUDIT]Deposit successful: Account=A1782308669553762612 Amount=1000.00
+2026/06/30 12:20:13 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:20:13 tansaction_handler.go:30: [WARN]Invalid deposit amount: 0.00
+2026/06/30 12:22:00 beneficiary_handler.go:60: [INFO]Get Beneficiary Endpoint Called
+2026/06/30 12:22:00 beneficiary_handler.go:94: [INFO]Beneficiaries added in the Customer ID; C1782308653610250854 was Fetched
+2026/06/30 12:22:08 tansaction_handler.go:236: [INFO]Transfer Money Endpoint Called
+2026/06/30 12:22:08 tansaction_handler.go:327: [INFO]Amount 100 Trnsfered From A1782308669553762612 To A1782308884215256742
+2026/06/30 12:22:17 tansaction_handler.go:236: [INFO]Transfer Money Endpoint Called
+2026/06/30 12:23:16 beneficiary_handler.go:60: [INFO]Get Beneficiary Endpoint Called
+2026/06/30 12:23:16 beneficiary_handler.go:94: [INFO]Beneficiaries added in the Customer ID; C1782308653610250854 was Fetched
+2026/06/30 12:23:24 tansaction_handler.go:236: [INFO]Transfer Money Endpoint Called
+2026/06/30 12:23:24 tansaction_handler.go:327: [INFO]Amount 1 Trnsfered From A1782308669553762612 To A1782308884215256742
+2026/06/30 12:24:08 beneficiary_handler.go:60: [INFO]Get Beneficiary Endpoint Called
+2026/06/30 12:24:08 beneficiary_handler.go:94: [INFO]Beneficiaries added in the Customer ID; C1782308653610250854 was Fetched
+2026/06/30 12:24:15 tansaction_handler.go:236: [INFO]Transfer Money Endpoint Called
+2026/06/30 12:24:15 tansaction_handler.go:327: [INFO]Amount 1 Trnsfered From A1782308669553762612 To A1782308884215256742
+2026/06/30 12:27:48 beneficiary_handler.go:60: [INFO]Get Beneficiary Endpoint Called
+2026/06/30 12:27:48 beneficiary_handler.go:94: [INFO]Beneficiaries added in the Customer ID; C1782308653610250854 was Fetched
+2026/06/30 12:27:56 tansaction_handler.go:236: [INFO]Transfer Money Endpoint Called
+2026/06/30 12:27:56 tansaction_handler.go:327: [INFO]Amount 1 Trnsfered From A1782308669553762612 To A1782308862813439468
+2026/06/30 12:28:14 beneficiary_handler.go:60: [INFO]Get Beneficiary Endpoint Called
+2026/06/30 12:28:14 beneficiary_handler.go:94: [INFO]Beneficiaries added in the Customer ID; C1782308653610250854 was Fetched
+2026/06/30 12:28:37 main.go:21: [INFO] Banking application started
+2026/06/30 12:28:37 main.go:27: Server Started on: 8080
+2026/06/30 12:28:49 tansaction_handler.go:236: [INFO]Transfer Money Endpoint Called
+2026/06/30 12:28:49 tansaction_handler.go:328: [INFO]Amount 1 Trnsfered From A1782308669553762612 To A1782308862813439468
+2026/06/30 12:29:06 beneficiary_handler.go:60: [INFO]Get Beneficiary Endpoint Called
+2026/06/30 12:29:06 beneficiary_handler.go:94: [INFO]Beneficiaries added in the Customer ID; C1782308653610250854 was Fetched
+2026/06/30 12:29:15 tansaction_handler.go:236: [INFO]Transfer Money Endpoint Called
+2026/06/30 12:29:15 tansaction_handler.go:328: [INFO]Amount 2 Trnsfered From A1782308669553762612 To A1782308884215256742
+2026/06/30 12:29:57 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:29:57 tansaction_handler.go:34: [AUDIT]Deposit requested: Account=A1782308669553762612 amount=2000.00
+2026/06/30 12:29:57 tansaction_handler.go:79: [AUDIT]Deposit successful: Account=A1782308669553762612 Amount=2000.00
+2026/06/30 12:31:19 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:31:19 tansaction_handler.go:34: [AUDIT]Deposit requested: Account=A1782308669553762612 amount=100.00
+2026/06/30 12:31:19 tansaction_handler.go:79: [AUDIT]Deposit successful: Account=A1782308669553762612 Amount=100.00
+2026/06/30 12:34:12 beneficiary_handler.go:60: [INFO]Get Beneficiary Endpoint Called
+2026/06/30 12:34:12 beneficiary_handler.go:94: [INFO]Beneficiaries added in the Customer ID; C1782308653610250854 was Fetched
+2026/06/30 12:34:20 tansaction_handler.go:236: [INFO]Transfer Money Endpoint Called
+2026/06/30 12:34:20 tansaction_handler.go:328: [INFO]Amount 4 Trnsfered From A1782308669553762612 To A1782308884215256742
+2026/06/30 12:34:28 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:34:28 tansaction_handler.go:30: [WARN]Invalid deposit amount: 0.00
+2026/06/30 12:34:39 beneficiary_handler.go:60: [INFO]Get Beneficiary Endpoint Called
+2026/06/30 12:34:39 beneficiary_handler.go:94: [INFO]Beneficiaries added in the Customer ID; C1782308653610250854 was Fetched
+2026/06/30 12:34:43 tansaction_handler.go:236: [INFO]Transfer Money Endpoint Called
+2026/06/30 12:36:05 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:36:05 tansaction_handler.go:30: [WARN]Invalid deposit amount: 0.00
+2026/06/30 12:36:15 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:36:15 tansaction_handler.go:34: [AUDIT]Deposit requested: Account=A1782308669553762612 amount=10.00
+2026/06/30 12:36:15 tansaction_handler.go:79: [AUDIT]Deposit successful: Account=A1782308669553762612 Amount=10.00
+2026/06/30 12:41:18 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:41:18 tansaction_handler.go:34: [AUDIT]Deposit requested: Account=A1782308669553762612 amount=10.00
+2026/06/30 12:41:18 tansaction_handler.go:79: [AUDIT]Deposit successful: Account=A1782308669553762612 Amount=10.00
+2026/06/30 12:41:24 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:41:24 tansaction_handler.go:30: [WARN]Invalid deposit amount: 0.00
+2026/06/30 12:41:30 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:41:30 tansaction_handler.go:30: [WARN]Invalid deposit amount: 0.00
+2026/06/30 12:44:02 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:44:02 tansaction_handler.go:30: [WARN]Invalid deposit amount: 0.00
+2026/06/30 12:44:06 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:44:06 tansaction_handler.go:30: [WARN]Invalid deposit amount: 0.00
+2026/06/30 12:44:08 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:44:08 tansaction_handler.go:30: [WARN]Invalid deposit amount: 0.00
+2026/06/30 12:44:12 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:44:12 tansaction_handler.go:34: [AUDIT]Deposit requested: Account=A1782308669553762612 amount=10.00
+2026/06/30 12:44:12 tansaction_handler.go:79: [AUDIT]Deposit successful: Account=A1782308669553762612 Amount=10.00
+2026/06/30 12:44:25 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:44:25 tansaction_handler.go:34: [AUDIT]Deposit requested: Account=A1782308669553762612 amount=100.00
+2026/06/30 12:44:25 tansaction_handler.go:79: [AUDIT]Deposit successful: Account=A1782308669553762612 Amount=100.00
+2026/06/30 12:44:40 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:44:40 tansaction_handler.go:30: [WARN]Invalid deposit amount: 0.00
+2026/06/30 12:44:52 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:44:52 tansaction_handler.go:30: [WARN]Invalid deposit amount: 0.00
+2026/06/30 12:44:55 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:44:55 tansaction_handler.go:30: [WARN]Invalid deposit amount: 0.00
+2026/06/30 12:44:56 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:44:56 tansaction_handler.go:30: [WARN]Invalid deposit amount: 0.00
+2026/06/30 12:44:57 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:44:57 tansaction_handler.go:30: [WARN]Invalid deposit amount: 0.00
+2026/06/30 12:44:57 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:44:57 tansaction_handler.go:30: [WARN]Invalid deposit amount: 0.00
+2026/06/30 12:46:57 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:46:57 tansaction_handler.go:30: [WARN]Invalid deposit amount: 0.00
+2026/06/30 12:47:06 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:47:06 tansaction_handler.go:34: [AUDIT]Deposit requested: Account=A1782308669553762612 amount=100.00
+2026/06/30 12:47:06 tansaction_handler.go:79: [AUDIT]Deposit successful: Account=A1782308669553762612 Amount=100.00
+2026/06/30 12:47:13 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:47:13 tansaction_handler.go:30: [WARN]Invalid deposit amount: 0.00
+2026/06/30 12:47:14 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:47:14 tansaction_handler.go:30: [WARN]Invalid deposit amount: 0.00
+2026/06/30 12:47:14 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:47:14 tansaction_handler.go:30: [WARN]Invalid deposit amount: 0.00
+2026/06/30 12:47:19 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:47:19 tansaction_handler.go:34: [AUDIT]Deposit requested: Account=A1782308669553762612 amount=100.00
+2026/06/30 12:47:19 tansaction_handler.go:79: [AUDIT]Deposit successful: Account=A1782308669553762612 Amount=100.00
+2026/06/30 12:49:57 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:49:57 tansaction_handler.go:30: [WARN]Invalid deposit amount: 0.00
+2026/06/30 12:51:39 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:51:39 tansaction_handler.go:30: [WARN]Invalid deposit amount: 0.00
+2026/06/30 12:58:37 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 12:58:37 tansaction_handler.go:30: [WARN]Invalid deposit amount: 0.00
+2026/06/30 13:01:42 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 13:01:42 tansaction_handler.go:30: [WARN]Invalid deposit amount: 0.00
+2026/06/30 13:01:53 auth.go:14: [INFO] Login endpoint called
+2026/06/30 13:01:53 auth.go:74: [INFO]User cust2 logged in 
+2026/06/30 13:01:53 account_handler.go:93: [INFO]Get Accounts Endpoint Called
+2026/06/30 13:01:54 tansaction_handler.go:333: [INFO]Get Dashboard Endpoint Called
+2026/06/30 13:01:54 tansaction_handler.go:399: [INFO]Dashboard for the Account ID: A1782308669553762612 was Fetched
+2026/06/30 13:01:58 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 13:01:58 tansaction_handler.go:30: [WARN]Invalid deposit amount: 0.00
+2026/06/30 13:02:48 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 13:02:48 tansaction_handler.go:30: [WARN]Invalid deposit amount: 0.00
+2026/06/30 13:06:58 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 13:06:58 tansaction_handler.go:30: [WARN]Invalid deposit amount: 0.00
+2026/06/30 13:07:23 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 13:07:23 tansaction_handler.go:30: [WARN]Invalid deposit amount: 0.00
+2026/06/30 13:12:01 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 13:12:01 tansaction_handler.go:30: [WARN]Invalid deposit amount: 0.00
+2026/06/30 13:12:08 tansaction_handler.go:15: [INFO]Deposit Endpoint Called
+2026/06/30 13:12:08 tansaction_handler.go:34: [AUDIT]Deposit requested: Account=A1782308669553762612 amount=100.00
+2026/06/30 13:12:08 tansaction_handler.go:79: [AUDIT]Deposit successful: Account=A1782308669553762612 Amount=100.00
+2026/06/30 13:12:12 beneficiary_handler.go:60: [INFO]Get Beneficiary Endpoint Called
+2026/06/30 13:12:12 beneficiary_handler.go:94: [INFO]Beneficiaries added in the Customer ID; C1782308653610250854 was Fetched
+2026/06/30 13:12:19 tansaction_handler.go:236: [INFO]Transfer Money Endpoint Called
+2026/06/30 13:12:25 tansaction_handler.go:236: [INFO]Transfer Money Endpoint Called
+2026/06/30 13:13:17 beneficiary_handler.go:60: [INFO]Get Beneficiary Endpoint Called
+2026/06/30 13:13:17 beneficiary_handler.go:94: [INFO]Beneficiaries added in the Customer ID; C1782308653610250854 was Fetched
+2026/06/30 13:13:21 tansaction_handler.go:236: [INFO]Transfer Money Endpoint Called
+2026/06/30 13:13:24 tansaction_handler.go:236: [INFO]Transfer Money Endpoint Called
+2026/06/30 13:13:33 tansaction_handler.go:236: [INFO]Transfer Money Endpoint Called
+2026/06/30 13:13:33 tansaction_handler.go:328: [INFO]Amount 100 Trnsfered From A1782308669553762612 To A1782308884215256742
+2026/06/30 13:15:36 beneficiary_handler.go:60: [INFO]Get Beneficiary Endpoint Called
+2026/06/30 13:15:36 beneficiary_handler.go:94: [INFO]Beneficiaries added in the Customer ID; C1782308653610250854 was Fetched
+2026/06/30 13:15:42 tansaction_handler.go:236: [INFO]Transfer Money Endpoint Called
+2026/06/30 13:15:51 tansaction_handler.go:236: [INFO]Transfer Money Endpoint Called
+2026/06/30 13:15:51 tansaction_handler.go:328: [INFO]Amount 100 Trnsfered From A1782308669553762612 To A1782308884215256742
+2026/06/30 13:21:05 beneficiary_handler.go:60: [INFO]Get Beneficiary Endpoint Called
+2026/06/30 13:21:05 beneficiary_handler.go:94: [INFO]Beneficiaries added in the Customer ID; C1782308653610250854 was Fetched
+2026/06/30 13:21:27 tansaction_handler.go:236: [INFO]Transfer Money Endpoint Called
+2026/06/30 13:21:34 tansaction_handler.go:236: [INFO]Transfer Money Endpoint Called
+2026/06/30 13:21:34 tansaction_handler.go:328: [INFO]Amount 100 Trnsfered From A1782308669553762612 To A1782308884215256742
+2026/06/30 13:21:41 tansaction_handler.go:236: [INFO]Transfer Money Endpoint Called
+2026/06/30 13:21:49 tansaction_handler.go:236: [INFO]Transfer Money Endpoint Called
+2026/06/30 13:21:56 tansaction_handler.go:236: [INFO]Transfer Money Endpoint Called
+2026/06/30 13:26:51 beneficiary_handler.go:60: [INFO]Get Beneficiary Endpoint Called
+2026/06/30 13:26:51 beneficiary_handler.go:94: [INFO]Beneficiaries added in the Customer ID; C1782308653610250854 was Fetched
+2026/06/30 13:26:56 tansaction_handler.go:83: [INFO]Withdraw Endpoint Called
+2026/06/30 13:26:56 tansaction_handler.go:99: [WARN]Invalid Withdraw Amount: 0.00
+2026/06/30 13:26:58 tansaction_handler.go:83: [INFO]Withdraw Endpoint Called
+2026/06/30 13:26:58 tansaction_handler.go:99: [WARN]Invalid Withdraw Amount: 0.00
+2026/06/30 13:27:03 tansaction_handler.go:83: [INFO]Withdraw Endpoint Called
+2026/06/30 13:27:03 tansaction_handler.go:99: [WARN]Invalid Withdraw Amount: 0.00
+2026/06/30 13:27:04 tansaction_handler.go:83: [INFO]Withdraw Endpoint Called
+2026/06/30 13:27:04 tansaction_handler.go:99: [WARN]Invalid Withdraw Amount: 0.00
+2026/06/30 13:28:28 tansaction_handler.go:83: [INFO]Withdraw Endpoint Called
+2026/06/30 13:28:28 tansaction_handler.go:99: [WARN]Invalid Withdraw Amount: 0.00
+2026/06/30 13:28:33 tansaction_handler.go:83: [INFO]Withdraw Endpoint Called
+2026/06/30 13:28:33 tansaction_handler.go:150: [AUDIT]Withdraw Successful: AccountA1782308669553762612 Amount=100.00
+2026/06/30 13:28:40 tansaction_handler.go:333: [INFO]Get Dashboard Endpoint Called
+2026/06/30 13:28:40 tansaction_handler.go:399: [INFO]Dashboard for the Account ID: A1782308669553762612 was Fetched
+2026/06/30 13:28:42 tansaction_handler.go:187: [INFO]Get Transactions Endpoint Called
+2026/06/30 13:28:42 tansaction_handler.go:232: [INFO]Transactions for the Account ID: A1782308669553762612 was Fetched
+2026/06/30 13:28:47 beneficiary_handler.go:60: [INFO]Get Beneficiary Endpoint Called
+2026/06/30 13:28:47 beneficiary_handler.go:94: [INFO]Beneficiaries added in the Customer ID; C1782308653610250854 was Fetched
+2026/06/30 14:57:00 beneficiary_handler.go:60: [INFO]Get Beneficiary Endpoint Called
+2026/06/30 14:57:00 beneficiary_handler.go:94: [INFO]Beneficiaries added in the Customer ID; C1782308653610250854 was Fetched
+2026/06/30 15:03:55 beneficiary_handler.go:60: [INFO]Get Beneficiary Endpoint Called
+2026/06/30 15:03:55 beneficiary_handler.go:94: [INFO]Beneficiaries added in the Customer ID; C1782308653610250854 was Fetched
+2026/06/30 15:03:58 tansaction_handler.go:187: [INFO]Get Transactions Endpoint Called
+2026/06/30 15:03:58 tansaction_handler.go:232: [INFO]Transactions for the Account ID: A1782308669553762612 was Fetched
+2026/06/30 15:05:56 tansaction_handler.go:187: [INFO]Get Transactions Endpoint Called
+2026/06/30 15:05:56 tansaction_handler.go:232: [INFO]Transactions for the Account ID: A1782308669553762612 was Fetched
