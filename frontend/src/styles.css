@@ -44,11 +44,6 @@ body.dark-theme .stat-card:hover{
     border: 1px solid #2563eb;
 }
 
-body.dark-theme table{
-    background: #1f2937;
-    color: white;
-}
-
 body.dark-theme input{
     background: #0f172a;
     color: white;
@@ -193,4 +188,12 @@ td{
 
 tr:nth-child(even){
     background:#f8fafc;
+}
+
+body.dark-theme tr:nth-child(even){
+    background: #111827;
+}
+
+body.dark-theme tr:nth-child(odd){
+    background: #1f2937;
 }
