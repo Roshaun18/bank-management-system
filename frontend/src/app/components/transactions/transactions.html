@@ -1,10 +1,19 @@
 <h2>Account Statement</h2>
 @if(role==='admin'){
     <input type="text" [(ngModel)]="accountId">
+    <br><br>
 <button type="button" class="theme-btn" (click)="loadTransactions()">Get Statement</button>
-    
+<br><br>   
+<button class="theme-btn" (click)="downloadCSV()">Download Statement</button>
+<br><br>
 }
 <p>{{message}}</p>
+<select [(ngModel)]="selectedType">
+    <option value="ALL">ALL</option>
+    <option value="DEPOSIT">Deposit</option>
+    <option value="WITHDRAW">Withdraw</option>
+    <option value="TRANSFER">Transfer</option>
+</select>
 <br><br>
 <button class="theme-btn" (click)="downloadCSV()">Download Statement</button>
 <br><br>
@@ -18,7 +27,7 @@
         <th>Amount</th>
     </tr>
 
-    <tr *ngFor="let txn of transactions">
+    <tr *ngFor="let txn of filteredTransactions">
         <td>{{txn.id}}</td>
         <td>{{txn.created_at}}</td>
         <td>{{txn.to_account_id}}</td>

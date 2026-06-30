@@ -14,6 +14,7 @@ export class TransactionsComponent {
   accountId: string | null='' ;
   transactions:any[]=[];
   message='';
+  selectedType='All';
 
 
   constructor(
@@ -96,4 +97,13 @@ export class TransactionsComponent {
     link.click();
     window.URL.revokeObjectURL(url);
   }
+
+  get filteredTransactions(){
+    if(this.selectedType==='ALL'){
+      return this.transactions;
+    }
+    return this.transactions.filter(
+      tx=>tx.type===this.selectedType
+    );
+}
 }
